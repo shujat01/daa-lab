@@ -1,0 +1,83 @@
+1
+Lab Programs
+Generating an interactive Gantt/timeline chart by redefining to the new dataframe.
+
+
+    
+library(plotrix) library(lubridate) tasks=list(
+labels=c("Research Proposal","Lit Survey","Data Collection"), starts=ymd("2023-01-12","2023-02-12","2023-02-26"), ends=ymd("2023-02-12","2023-03-12","2023-04-12"), priorities=c(1,2,3)
+)
+tasks
+vgridpos=ymd("2023-01-12","2023-02-12","2023-02-26") vgridlab=c("Jan","Feb","Mar") gantt.chart(tasks,vgridpos=vgridpos,vgridlab = vgridlab, main="My Gantt Chart",taskcolors = c("red","pink","blue"), border.col = "black")
+
+
+2
+
+
+Illustrate the steps for creating the scattered plot with example using legends, text, abline functions using the given dataset
+library(googleVis)
+income = read.csv("prog2_data.csv", header = TRUE)
+scater = data.frame(gdp = c(income$gdp_ann),gini= c(income$Gini))
+scaterp4 = gvisScatterChart(scater, option= list(width = 650,
+height = 600, legend = "none",title = "Reltionship between
+Inequality and GDP growth in USA",
+hAxis = "{title :'GDP'}",
+showR2: true}}")) plot(scaterp4)
+vAxis = "{title :'Gini'}",
+dataOpacity = 0.8,
+trendlines="{0:{type : 'linear', visibleInLegend: true,
+
+3
+
+
+Generate a heat map with labels for the dataset and mentioning the x label = " Body Count per month", y label = "Years" using the given dataset
+#install.packges(c("pheatmap","RColorBrewer")) library(RColorBrewer)
+library(pheatmap)
+irq = read.csv("prog3_data.csv", header = TRUE, sep =",") row.names(irq) = irq$years
+irq = data.matrix(irq)
+irq = data.matrix(irq[,2:13])
+heatcolor = brewer.pal(7,"Greens")
+pheatmap(irq, cluster_row= FALSE, cluster_col = FALSE, display_numbers = TRUE, color = heatcolor, main = "Iraq Body Count", fontsize_number = 10)
+
+
+4
+Construct a 3D scatter plot for iris dataset
+  
+
+library("scatterplot3d") # load
+data(iris)
+head(iris)
+colors <- c("#999999", "#E69F00", "#56B4E9")
+colors <- colors[as.numeric(iris$Species)]
+scatterplot3d(iris[,1:3], pch = 16, color=colors, grid=TRUE, box=TRUE)
+
+
+5 Project the 3D histogram with the z variable as well by generating the data for the x and y values x = y = seq(-4,4,by =0.5 )
+library(plot3D)
+
+# X,Y and Z values
+x = y = seq(-1,1,by =0.5 )
+zval = c(20.8, 22.3, 22.7, 11.1, 20.1, 2.2, 6.7, 14.1, 6.6, 24.7, 15.7, 15.1, 9.9, 9.3, 14.7, 8.0, 14.3, 5.1, 6.5, 19.7, 21.9, 11.2, 11.6, 3.9, 14.8 )
+# Convert Z values into a matrix.
+z = matrix(zval, nrow=5, ncol=5, byrow=TRUE) print(nrow(z))
+hist3D(x,y,z, zlim=c(0,25), theta=40, phi=40, axes=TRUE,label=TRUE, nticks=5, ticktype="detailed", space=0.5, lighting=TRUE, light="diffuse", shade=0.5)
+
+6
+Generate the donut plot for the following dataset by providing the labels ("Army", "Navy", "Air and percentage for the traumatic brain injuries data = c(179718,41370,41914,44280)
+
+ 
+library(plotrix)
+data = c(179718,41370,41914,44280)
+pct = (data/sum(data))*100
+pct = round(pct,2)
+labels = c("Army", "Navy", "Air Force","Marines")
+labels1 = paste(labels,pct, "%")
+pie3D(data, shade = 0.5, labels = labels1, labelcol = "red",labelcex = 0.75)#,col= rainbow(4),startpos = 4)
+
+7 Creating a hexbin plot by generating a fake dataset and generating 1000 normally distributed random numbers
+
+library(hexbin) set.seed(356)
+x = rnorm(1000)
+y = rnorm(1000)
+bins = hexbin(x,y) plot(bins)
+plot(bins , border = TRUE) plot(bins, border = "red") smb = smooth.hexbin(bins) plot(smb)
