@@ -1,83 +1,259 @@
-1
-Lab Programs
-Generating an interactive Gantt/timeline chart by redefining to the new dataframe.
+1)PASSWORD
+
+#!/bin/bash
+# Define valid username and password
+valid_username="myusername"
+valid_password="mypassword"
+# Read username from user
+read -p "Enter username: " username
+# Read password from user without displaying input
+read -s -p "Enter password: " password
+echo
+# Check if the entered username and password are valid
+if [ "$username" == "$valid_username" ]&& [ "$password" == "$valid_password" ]; then
+   echo "Valid username and password."
+else
+   echo "Invalid username or password."
+fi
+
+2)ARTHIMATIC CALCULATOR
+
+#!/bin/sh
+a=10
+b=20
+x=”hello”
+y=”world”
+echo “a+b: $(($a+$b))”
+echo “a-b: $(($a-b))”
+echo “a%b: $(($a%$b))”
+echo “a/b: $(($a/b))”
+c=$x$y
+echo $c
+if ($a==$b)
+then
+​echo “a is equal to b”
+else
+​echo “a is not equal to b”
+fi
 
 
-    
-library(plotrix) library(lubridate) tasks=list(
-labels=c("Research Proposal","Lit Survey","Data Collection"), starts=ymd("2023-01-12","2023-02-12","2023-02-26"), ends=ymd("2023-02-12","2023-03-12","2023-04-12"), priorities=c(1,2,3)
-)
-tasks
-vgridpos=ymd("2023-01-12","2023-02-12","2023-02-26") vgridlab=c("Jan","Feb","Mar") gantt.chart(tasks,vgridpos=vgridpos,vgridlab = vgridlab, main="My Gantt Chart",taskcolors = c("red","pink","blue"), border.col = "black")
+3)UPPER/LOWER CASE
 
+```bash
+var_name="THIS IS a TEST"
+$ echo "$VAR_NAME" | tr '[:upper:]' '[:lower:]'
+$ movie="The Matrix"
+$ echo "$movie" | tr '[:lower:]' '[:upper:]'
 
-2
+4)REVERSE
 
-
-Illustrate the steps for creating the scattered plot with example using legends, text, abline functions using the given dataset
-library(googleVis)
-income = read.csv("prog2_data.csv", header = TRUE)
-scater = data.frame(gdp = c(income$gdp_ann),gini= c(income$Gini))
-scaterp4 = gvisScatterChart(scater, option= list(width = 650,
-height = 600, legend = "none",title = "Reltionship between
-Inequality and GDP growth in USA",
-hAxis = "{title :'GDP'}",
-showR2: true}}")) plot(scaterp4)
-vAxis = "{title :'Gini'}",
-dataOpacity = 0.8,
-trendlines="{0:{type : 'linear', visibleInLegend: true,
-
-3
-
-
-Generate a heat map with labels for the dataset and mentioning the x label = " Body Count per month", y label = "Years" using the given dataset
-#install.packges(c("pheatmap","RColorBrewer")) library(RColorBrewer)
-library(pheatmap)
-irq = read.csv("prog3_data.csv", header = TRUE, sep =",") row.names(irq) = irq$years
-irq = data.matrix(irq)
-irq = data.matrix(irq[,2:13])
-heatcolor = brewer.pal(7,"Greens")
-pheatmap(irq, cluster_row= FALSE, cluster_col = FALSE, display_numbers = TRUE, color = heatcolor, main = "Iraq Body Count", fontsize_number = 10)
-
-
-4
-Construct a 3D scatter plot for iris dataset
-  
-
-library("scatterplot3d") # load
-data(iris)
-head(iris)
-colors <- c("#999999", "#E69F00", "#56B4E9")
-colors <- colors[as.numeric(iris$Species)]
-scatterplot3d(iris[,1:3], pch = 16, color=colors, grid=TRUE, box=TRUE)
-
-
-5 Project the 3D histogram with the z variable as well by generating the data for the x and y values x = y = seq(-4,4,by =0.5 )
-library(plot3D)
-
-# X,Y and Z values
-x = y = seq(-1,1,by =0.5 )
-zval = c(20.8, 22.3, 22.7, 11.1, 20.1, 2.2, 6.7, 14.1, 6.6, 24.7, 15.7, 15.1, 9.9, 9.3, 14.7, 8.0, 14.3, 5.1, 6.5, 19.7, 21.9, 11.2, 11.6, 3.9, 14.8 )
-# Convert Z values into a matrix.
-z = matrix(zval, nrow=5, ncol=5, byrow=TRUE) print(nrow(z))
-hist3D(x,y,z, zlim=c(0,25), theta=40, phi=40, axes=TRUE,label=TRUE, nticks=5, ticktype="detailed", space=0.5, lighting=TRUE, light="diffuse", shade=0.5)
-
-6
-Generate the donut plot for the following dataset by providing the labels ("Army", "Navy", "Air and percentage for the traumatic brain injuries data = c(179718,41370,41914,44280)
-
+```bash
+#!/bin/bash
  
-library(plotrix)
-data = c(179718,41370,41914,44280)
-pct = (data/sum(data))*100
-pct = round(pct,2)
-labels = c("Army", "Navy", "Air Force","Marines")
-labels1 = paste(labels,pct, "%")
-pie3D(data, shade = 0.5, labels = labels1, labelcol = "red",labelcex = 0.75)#,col= rainbow(4),startpos = 4)
+# Store all arguments in an array
+args=("$@")
+ 
+# Get the number of arguments
+num_args=$#
+ 
+# Print arguments in reverse order
+for (( i=num_args-1; i>=0; i-- )); do
+   echo "${args[$i]}"
+done
+```
 
-7 Creating a hexbin plot by generating a fake dataset and generating 1000 normally distributed random numbers
+5)FILE DIRECTORY
 
-library(hexbin) set.seed(356)
-x = rnorm(1000)
-y = rnorm(1000)
-bins = hexbin(x,y) plot(bins)
-plot(bins , border = TRUE) plot(bins, border = "red") smb = smooth.hexbin(bins) plot(smb)
+```bash
+#!/bin/bash
+ 
+# Read file path from user
+read -p "Enter a file path: " file_path
+ 
+# Check if the file is a directory
+if [ -d "$file_path" ]; then
+   echo "The file is a directory."
+else
+   echo "The file is not a directory."
+fi
+```
+
+
+6)PERMISSION TO FILES
+
+```bash
+#!/bin/bash
+ 
+# Check if two file names are provided as arguments
+if [ $# -ne 2 ]; then
+   echo "Error: Please provide exactly two file names as arguments."
+   exit 1
+fi
+ 
+# Store the file names provided as arguments
+file1="$1"
+file2="$2"
+ 
+# Check if both files exist
+if [ ! -e "$file1" ] || [ ! -e "$file2" ]; then
+   echo "Error: One or both of the specified files do not exist."
+   exit 1
+fi
+ 
+# Get the permissions of both files
+perms_file1=$(stat -c "%a" "$file1")
+perms_file2=$(stat -c "%a" "$file2")
+ 
+# Compare the permissions of the files
+if [ "$perms_file1" = "$perms_file2" ]; then
+   echo "The permissions of $file1 and $file2 are similar."
+else
+   echo "The permissions of $file1 and $file2 are different."
+fi
+```
+
+7)LEAP YEAR
+
+```bash
+#!/bin/bash
+ 
+# Read year from user
+read -p "Enter a year: " year
+ 
+# Check if the year is a leap year
+if (( year % 4 == 0 && year % 100 != 0 )) || (( year % 400 == 0 )); then
+   echo "The year $year is a leap year."
+else
+   echo "The year $year is not a leap year."
+fi
+```
+
+8)GCD LCM
+
+```bash
+#!/bin/bash
+ 
+# Function to compute the GCD of two numbers using Euclidean algorithm
+gcd() {
+   a=$1
+   b=$2
+ 
+   while ((b != 0)); do
+       remainder=$((a % b))
+       a=$b
+       b=$remainder
+   done
+ 
+   echo "$a"
+}
+ 
+# Function to compute the LCM of two numbers using GCD
+lcm() {
+   a=$1
+   b=$2
+ 
+gcd_value=$(gcd "$a" "$b")
+lcm_value=$((a * b / gcd_value))
+ 
+   echo "$lcm_value"
+}
+ 
+# Compute GCD and LCM of two numbers
+num1=24
+num2=36
+ 
+gcd_result=$(gcd "$num1" "$num2")
+lcm_result=$(lcm "$num1" "$num2")
+ 
+echo "GCD of $num1 and $num2: $gcd_result"
+echo "LCM of $num1 and $num2: $lcm_result"
+ 
+# Function to compute the GCD of multiple numbers
+gcd_multiple() {
+   numbers=("$@")
+   result=${numbers[0]}
+ 
+   for ((i = 1; i< ${#numbers[@]}; i++)); do
+       result=$(gcd "$result" "${numbers[i]}")
+   done
+ 
+   echo "$result"
+}
+ 
+# Function to compute the LCM of multiple numbers
+lcm_multiple() {
+   numbers=("$@")
+   result=${numbers[0]}
+ 
+   for ((i = 1; i< ${#numbers[@]}; i++)); do
+       result=$(lcm "$result" "${numbers[i]}")
+   done
+ 
+   echo "$result"
+}
+ 
+# Compute GCD and LCM of multiple numbers
+numbers=(12 24 36 48)
+ 
+gcd_multiple_result=$(gcd_multiple "${numbers[@]}")
+lcm_multiple_result=$(lcm_multiple "${numbers[@]}")
+ 
+echo "GCD of ${numbers[*]}: $gcd_multiple_result"
+echo "LCM of ${numbers[*]}: $lcm_multiple_result"
+```
+
+
+9)PRIME OR NOT
+
+```bash
+#!/bin/bash
+ 
+# Function to check if a number is prime
+is_prime() {
+   number=$1
+   if ((number < 2)); then
+       return 1
+   fi
+ 
+   # Check divisibility up to the square root of the number
+   for ((i = 2; i * i<= number; i++)); do
+       if ((number % i == 0)); then
+           return 1
+       fi
+   done
+ 
+   return 0
+}
+ 
+# Read the number from the user
+read -p "Enter a number: " input_number
+ 
+# Check if the number is prime
+if is_prime "$input_number"; then
+   echo "$input_number is a prime number."
+else
+   echo "$input_number is not a prime number."
+fi
+```
+10)PALINDROME
+
+```bash
+#!/bin/bash
+ 
+# Read string from user
+read -p "Enter a string: " input_string
+ 
+# Remove non-alphanumeric characters and convert to lowercase
+clean_string=$(echo "$input_string" | tr -dc '[:alnum:]' | tr '[:upper:]' '[:lower:]')
+ 
+# Reverse the string
+reverse_string=$(echo "$clean_string" | rev)
+ 
+# Check if the string is a palindrome
+if [ "$clean_string" = "$reverse_string" ]; then
+   echo "The string '$input_string' is a palindrome."
+else
+   echo "The string '$input_string' is not a palindrome."
+fi
+```
+
