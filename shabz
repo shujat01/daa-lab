@@ -1,15 +1,14 @@
 1)PASSWORD
 
 #!/bin/bash
-# Define valid username and password
 valid_username="myusername"
 valid_password="mypassword"
-# Read username from user
+
 read -p "Enter username: " username
-# Read password from user without displaying input
+
 read -s -p "Enter password: " password
 echo
-# Check if the entered username and password are valid
+
 if [ "$username" == "$valid_username" ]&& [ "$password" == "$valid_password" ]; then
    echo "Valid username and password."
 else
