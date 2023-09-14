@@ -1,4 +1,4 @@
-1a
+1a  MAXIMUM MARKS 
 
 m1 = int(input("Enter the marks in the first test: ")) 
 m2 = int(input("Enter the marks in second test: ")) 
@@ -15,7 +15,7 @@ else:
 Avg = total / 2
 print("The average of the best two test marks is: ", Avg)
 
-1b
+1b PALIMDROME
 
 temp=num 
 rev=0 
@@ -246,21 +246,25 @@ print(isPhoneNumber('Moshi moshi'))
 
 5b
 
-import pyperclip, re # Importing the libraries(this case: regex and pyperclip)
- # Create phone regex. phoneRegex = re.compile(r'''(
-(\d{3}|\(\d{3}\))? # area code (\s|-|\.)? # separator
-(\d{3}) # first 3 digits
-(\s|-|\.) # separator
-(\d{4}) # last 4 digits (\s*(ext|x|ext.)\s*(\d{2,5}))? )''', re.VERBOSE)
-# TODO: Create email regex.
-# TODO: Find matches in clipboard text. # TODO: Copy results to the clipboard.
-# Create email regex. emailRegex = re.compile(r'''(
-[a-zA-Z0-9._%+-] + #username
-@ # @symbole [a-zA-Z0-9.-] + # domain (\.[a-zA-Z]{2,4}) # dot-something )''', re.VERBOSE)
-# Find matches in the clipboard text. text = str(pyperclip.paste())
+import pyperclip, re 
+phoneRegex = re.compile(r'''(
+(\d{3}|\(\d{3}\))? # 
+(\s|-|\.)?
+(\d{3}) 
+(\s|-|\.) 
+(\d{4}) 
+(\s*(ext|x|ext.)\s*(\d{2,5}))?
+)''', re.VERBOSE)
+
+emailRegex = re.compile(r'''(
+[a-zA-Z0-9._%+-] +
+@
+[a-zA-Z0-9.-] + (\.[a-zA-Z]{2,4}) 
+)''', re.VERBOSE)
+text = str(pyperclip.paste())
 matches = []
 for groups in phoneRegex.findall(text):
-# extension
+
 phoneNum = '-'.join([groups[1], groups[3], groups[5]]) if groups[8] != '':
 phoneNum += ' x' + groups[8] matches.append(phoneNum)
 for groups in emailRegex.findall(text): matches.append(groups[0])
@@ -276,82 +280,85 @@ print('No phone numbers or email addresses found.')
 
 6a
 
-# Get the file name from the user
+
 file_name = input("Enter the file name (e.g., myfile.txt): ")
 try:
-# Open the file in read mode with open(file_name, 'r') as file:
-# Read all the lines into a list lines = file.readlines()
-# Get the number of lines to display from the user
-num_lines = int(input("Enter the number of lines to display: "))
-# Display the first N lines for line in lines[:num_lines]:
-print(line.strip())
+with open(file_name, 'r') as file:
+  lines = file.readlines()
+  num_lines = int(input("Enter the number of lines to display: "))
+  for line in lines[:num_lines]:
+    print(line.strip())
 except FileNotFoundError:
-print("File not found. Please make sure the file exists in the specified path.")
+  print("File not found. Please make sure the file exists in the specified path.")
 
 6a 2
 
-# Get the file name from the user
+
 file_name = input("Enter the file name (e.g., myfile.txt): ")
 try:
-# Open the file in read mode with open(file_name, 'r') as file:
-# Get the word from the user
-word = input("Enter the word to find its frequency: ")
-# Initialize a counter variable frequency = 0
-# Loop through each line of the file for line in file:
-# Split the line into words words = line.strip().split()
-# Count the occurrences of the word frequency += words.count(word)
-# Display the frequency of the word
-print(f"The word '{word}' appeared {frequency} times in the file.")
+with open(file_name, 'r') as file:
+  word = input("Enter the word to find its frequency: ")
+  frequency = 0
+  for line in file:
+    words = line.strip().split()
+    frequency += words.count(word)
+
+  print(f"The word '{word}' appeared {frequency} times in the file.")
 except FileNotFoundError:
-print("File not found. Please make sure the file exists in the specified path.")
+  print("File not found. Please make sure the file exists in the specified path.")
 
 
 6b
 
 import zipfile import os
-# Get the folder path from the user
 folder_path = input("Enter the folder path to zip: ")
-# Get the ZIP file name from the user
 zip_file_name = input("Enter the name of the ZIP file to create: ")
 try:
-# Create a new ZIP file
-with zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
-# Walk through each file in the folder for root, _, files in os.walk(folder_path):
-for file in files:
-# Get the absolute path of the file file_path = os.path.join(root, file)
-# Add the file to the ZIP archive zipf.write(file_path, arcname=file)
-print(f"The folder '{folder_path}' has been securely zipped into the file '{zip_file_name}'.")
+  with zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+     for root, _, files in os.walk(folder_path):
+       for file in files:
+          file_path = os.path.join(root, file)
+          zipf.write(file_path, arcname=file)
+  print(f"The folder '{folder_path}' has been securely zipped into the file '{zip_file_name}'.")
 except FileNotFoundError:
-print("Folder not found. Please make sure the folder exists in the specified path.")
+  print("Folder not found. Please make sure the folder exists in the specified path.")
 
 
 7a
 
 import math
-# Parent class class Shape:
-def __init__(self): pass
-def calculate_area(self): pass
-# Child class - Triangle inherits from Shape class Triangle(Shape):
-def __init__(self, base, height): super().__init__()
-self.base = base
-self.height = height
-def calculate_area(self):
-return 0.5 * self.base * self.height
-# Child class - Circle inherits from Shape class Circle(Shape):
-def __init__(self, radius): super().__init__() self.radius = radius
-def calculate_area(self):
-return math.pi * self.radius**2
-# Child class - Rectangle inherits from Shape class Rectangle(Shape):
- 
-   def __init__(self, length, width): super().__init__()
-self.length = length
-self.width = width
-def calculate_area(self):
-return self.length * self.width
-# Creating instances of each class triangle = Triangle(5, 7)
+class Shape:
+ def __init__(self):
+   pass
+ def calculate_area(self): 
+   pass
+class Triangle(Shape):
+ def __init__(self, base, height):
+   super().__init__()
+   self.base = base
+   self.height = height
+ def calculate_area(self):
+   return 0.5 * self.base * self.height
+class Circle(Shape):
+ def __init__(self, radius):
+   super().__init__() 
+   self.radius = radius
+ def calculate_area(self):
+  return math.pi * self.radius**2
+
+class Rectangle(Shape):
+  def __init__(self, length, width): 
+   super().__init__()
+   self.length = length
+   self.width = width
+  def calculate_area(self):
+   return self.length * self.width
+triangle = Triangle(5, 7)
 circle = Circle(3)
 rectangle = Rectangle(4, 6)
-# Calculating and printing the area of each shape print("Area of Triangle:", triangle.calculate_area()) print("Area of Circle:", circle.calculate_area()) print("Area of Rectangle:", rectangle.calculate_area())
+print("Area of Triangle:", triangle.calculate_area()) 
+print("Area of Circle:", circle.calculate_area()) 
+print("Area of Rectangle:", rectangle.calculate_area())
 
 
 
@@ -359,21 +366,33 @@ rectangle = Rectangle(4, 6)
 
 class Employee:
 def __init__(self, name, employee_id, department, salary):
-self.name = name self.employee_id = employee_id self.department = department self.salary = salary
-def update_salary(self, new_salary, department): if self.department == department:
-self.salary = new_salary
+  self.name = name 
+  self.employee_id = employee_id 
+  self.department = department 
+  self.salary = salary
+def update_salary(self, new_salary, department): 
+  if self.department == department:
+    self.salary = new_salary
 def __str__(self):
-return f"Name: {self.name}\nEmployee_ID: {self.employee_id}\nDepartment:
-{self.department}\nSalary: {self.salary}"
-# Create employees
-employee1 = Employee("John Doe", 1, "Finance", 5000) employee2 = Employee("Jane Smith", 2, "Engineering", 6000) employee3 = Employee("Tom Wilson", 3, "Engineering", 5500)
-# Print employee details before updating salary print("Before salary update:") print(employee1)
+  return f"Name: {self.name}\nEmployee_ID: {self.employee_id}\nDepartment:
+    {self.department}\nSalary: {self.salary}"
+
+employee1 = Employee("John Doe", 1, "Finance", 5000) 
+employee2 = Employee("Jane Smith", 2, "Engineering", 6000) 
+employee3 = Employee("Tom Wilson", 3, "Engineering", 5500)
+
+print("Before salary update:") 
+print(employee1)
 print(employee2)
 print(employee3)
-# Update salary of employees belonging to "Engineering" department new_salary = 6500
+
+new_salary = 6500
 department = "Engineering"
-employee2.update_salary(new_salary, department) employee3.update_salary(new_salary, department)
-# Print employee details after updating salary print("\nAfter salary update:") print(employee1)
+employee2.update_salary(new_salary, department) 
+employee3.update_salary(new_salary, department)
+
+print("\nAfter salary update:") 
+print(employee1)
 print(employee2)
 print(employee3)
 
