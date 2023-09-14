@@ -16,189 +16,218 @@ Avg = total / 2
 print("The average of the best two test marks is: ", Avg)
 
 1b PALIMDROME
+num = int(input("Enter a number: "))
+temp = num
+rev = 0
+digit = int(input("Enter a digit: "))
+count = 0
 
-temp=num 
-rev=0 
-while(num!=0):
-  rem=num%10 
-  rev=rev*10+rem 
-  num=num//10
-  if rem == digit:
-  count += 1
-if temp==rev:
-  print("The number is a palindrome!")
+while num != 0:
+    rem = num % 10
+    rev = rev * 10 + rem
+    num = num // 10
+    if rem == digit:
+        count += 1
+
+if temp == rev:
+    print("The number is a palindrome!")
 else:
-  print("The number isn't a palindrome!")
+    print("The number isn't a palindrome!")
+
 print("{} occurred {} times in {}".format(digit, count, temp))
 
-2a
+
+2a  FABINAUCCI
 
 nterms = int(input("How many terms? "))
 
-n1, n2 = 0, 1 
+n1, n2 = 0, 1
 count = 0
-if nterms <= 0:
- print("Please enter a positive integer")
-elif nterms == 1:
- print("Fibonacci sequence upto",nterms,":") 
- print(n1)
-else:
- print("Fibonacci sequence:") while count < nterms:
- print(n1)
- nth = n1 + n2
- n1 = n2
- n2 = nth
- count += 1
 
-2b
+if nterms <= 0:
+    print("Please enter a positive integer")
+elif nterms == 1:
+    print("Fibonacci sequence upto", nterms, ":")
+    print(n1)
+else:
+    print("Fibonacci sequence:")
+    while count < nterms:
+        print(n1, end=' ')
+        nth = n1 + n2
+        n1 = n2
+        n2 = nth
+        count += 1
+
+
+2b  CONVERSION 
+
 
 def decimal_into_binary(decimal_1): 
- decimal = int(decimal_1)
- print("The given decimal number", decimal, "in Binary number is: ", bin(decimal))
+    decimal = int(decimal_1)
+    print("The given decimal number", decimal, "in Binary number is: ", bin(decimal))
 
 def decimal_into_octal(decimal_1): 
- decimal = int(decimal_1)
- print("The given decimal number", decimal, "in Octal number is: ", oct(decimal))
+    decimal = int(decimal_1)
+    print("The given decimal number", decimal, "in Octal number is: ", oct(decimal))
 
 def decimal_into_hexadecimal(decimal_1): 
- decimal = int(decimal_1)
- print("The given decimal number", decimal, " in Hexadecimal number is: ", hex(decimal))
+    decimal = int(decimal_1)
+    print("The given decimal number", decimal, "in Hexadecimal number is: ", hex(decimal))
 
-decimal_1 = int(input(" Enter the Decimal Number: ")) 
+
+decimal_1 = int(input("Enter the Decimal Number: ")) 
+
 decimal_into_binary(decimal_1) 
 decimal_into_octal(decimal_1) 
 decimal_into_hexadecimal(decimal_1)
 
-3a
 
-s = input("Enter a sentence: ") 
-w, d, u, l = 0, 0, 0, 0
+3a  UPPERCASE
+
+s = input("Enter a sentence: ")
+w, d, u, l = 0, 0, 0, 0 
+
 l_w = s.split()
 w = len(l_w)
+
 for c in s:
- if c.isdigit():
-   d =d +1 
- elif c.isupper():
-   u =u +1
- elif c.islower():
-   l = l +1
-print ("No of Words: ", w)
-print ("No of Digits: ", d)
-print ("No of Uppercase letters: ", u) 
-print ("No of Lowercase letters: ", l)
+    if c.isdigit():
+        d += 1
+    elif c.isupper():
+        u += 1
+    elif c.islower():
+        l += 1
+
+print("No of Words:", w)
+print("No of Digits:", d)
+print("No of Uppercase letters:", u)
+print("No of Lowercase letters:", l)
 
 
-3b
+
+3b  STRINGS
 
 import difflib
+
 def string_similarity(str1, str2):
-  result = difflib.SequenceMatcher(a=str1.lower(), b=str2.lower())
-  return result.ratio()
+    result = difflib.SequenceMatcher(a=str1.lower(), b=str2.lower())
+    return result.ratio()
+
 str1 = 'Python Exercises'
 str2 = 'Python Exercises'
+
 print("Original string:")
 print(str1)
 print(str2)
-print("Similarity between two said strings:") 
-print(string_similarity(str1,str2))
+print("Similarity between two said strings:")
+print(string_similarity(str1, str2))
+
 str1 = 'Python Exercises'
 str2 = 'Python Exercise'
+
 print("\nOriginal string:")
 print(str1)
 print(str2)
 print("Similarity between two said strings:")
-print(string_similarity(str1,str2))
+print(string_similarity(str1, str2))
+
 str1 = 'Python Exercises'
 str2 = 'Python Ex.'
+
 print("\nOriginal string:")
 print(str1)
 print(str2)
-print("Similarity between two said strings:") 
-print(string_similarity(str1,str2))
-str1 = 'Python Exercises' str2 = 'Python' 
-print("\nOriginal string:") 
-print(str1)
-print(str2)
-print("Similarity between two said strings:") 
-print(string_similarity(str1,str2))
+print("Similarity between two said strings:")
+print(string_similarity(str1, str2))
+
 str1 = 'Python Exercises'
-str1 = 'Java Exercises'
+str2 = 'Python'
+
 print("\nOriginal string:")
 print(str1)
 print(str2)
-print("Similarity between two said strings:") 
-print(string_similarity(str1,str2))
+print("Similarity between two said strings:")
+print(string_similarity(str1, str2))
+
+str1 = 'Python Exercises'
+str2 = 'Java Exercises'
+
+print("\nOriginal string:")
+print(str1)
+print(str2)
+print("Similarity between two said strings:")
+print(string_similarity(str1, str2))
 
 
+4a  MERGE SORT
 
-4a
+ def merge(arr, l, m, r):
+    n1 = m - l + 1
+    n2 = r - m
+    L = [0] * (n1)
+    R = [0] * (n2)
+    for i in range(0, n1):
+        L[i] = arr[l + i]
+    for j in range(0, n2):
+        R[j] = arr[m + 1 + j]
+    i = 0
+    j = 0
+    k = l
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
 
-def merge(arr, l, m, r):
- n1 = m - l + 1
- n2 = r - m
- L = [0] * (n1)
- R = [0] * (n2)
- for i in range(0, n1): 
-   L[i] = arr[l + i]
- for j in range(0, n2):
-   R[j] = arr[m + 1 + j]
- i = 0
- j = 0  
- k = l 
-while i < n1 and j < n2: 
-  if L[i] <= R[j]:
-    arr[k] = L[i]
-    i += 1 
-  else:
-    arr[k] = R[j]
-    j += 1 
-  k += 1
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
 
-while i < n1:
-  arr[k] = L[i] 
-  i += 1
-  k += 1
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
 
-while j < n2:
-  arr[k] = R[j] 
-  j += 1
-  k += 1
+def mergeSort(arr, l, r):
+    if l < r:
+        m = l + (r - l) // 2
+        mergeSort(arr, l, m)
+        mergeSort(arr, m + 1, r)
+        merge(arr, l, m, r)
 
-
- def mergeSort(arr, l, r): 
-   if l < r:
-     m = l + (r - l) // 2
-     
-     mergeSort(arr, l, m) 
-     mergeSort(arr, m + 1, r)
-     merge(arr, l, m, r)
-
-arr = [12, 11, 13, 5, 6, 7] 
-n = len(arr) 
+arr = [12, 11, 13, 5, 6, 7]
+n = len(arr)
 print("Given array is")
 for i in range(n):
-   print("%d" % arr[i], end=" ")
-mergeSort(arr, 0, n - 1) 
-print("\n\nSorted array is") 
+    print("%d" % arr[i], end=" ")
+mergeSort(arr, 0, n - 1)
+print("\n\nSorted array is")
 for i in range(n):
-   print("%d" % arr[i], end=" ")
+    print("%d" % arr[i], end=" ")
 
 
-Insertion sort:
+INSERTION
+
 def insertionSort(arr):
-  if (n := len(arr)) <= 1:
-    return
-  for i in range(1, n):
-    key = arr[i]
-    j = i -1
-    while j >= 0 and key < arr[j]:
-      arr[j + 1] = arr[j]
-      j -= 1
-    arr[j + 1] = key
+    n = len(arr)
+    if n <= 1:
+        return
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
 
-arr = [12, 11, 13, 5, 6] 
-insertionSort(arr) 
+arr = [12, 11, 13, 5, 6]
+insertionSort(arr)
 print(arr)
+
 
 4b
 
@@ -221,107 +250,125 @@ print(ob1.romanToInt("CDXLIII"))
 
 5a
 
-def isPhoneNumber(text): 
-  if len(text) != 12:
-    return False
-    for i in range(0, 3):
-      if not text[i].isdecimal(): 
-         return False
-  if text[3] != '-':
-    return False
-    for i in range(4, 7):
-      if not text[i].isdecimal(): 
+def isPhoneNumber(text):
+    if len(text) != 12:
         return False
-  if text[7] != '-':
-     return False
-     for i in range(8, 12):
-        if not text[i].isdecimal(): 
-          return False
-return True
-print('Is 415-555-4242 a phone number?') 
-print(isPhoneNumber('415-555-4242')) 
-print('Is Moshi moshi a phone number?') 
+    for i in range(0, 3):
+        if not text[i].isdecimal():
+            return False
+    if text[3] != '-':
+        return False
+    for i in range(4, 7):
+        if not text[i].isdecimal():
+            return False
+    if text[7] != '-':
+        return False
+    for i in range(8, 12):
+        if not text[i].isdecimal():
+            return False
+    return True
+
+print('Is 415-555-4242 a phone number?')
+print(isPhoneNumber('415-555-4242'))
+print('Is Moshi moshi a phone number?')
 print(isPhoneNumber('Moshi moshi'))
+
 
 
 5b
 
-import pyperclip, re 
+
+import pyperclip
+import re
+
 phoneRegex = re.compile(r'''(
-(\d{3}|\(\d{3}\))? # 
-(\s|-|\.)?
-(\d{3}) 
-(\s|-|\.) 
-(\d{4}) 
-(\s*(ext|x|ext.)\s*(\d{2,5}))?
+    (\d{3}|\(\d{3}\))?
+    (\s|-|\.)?
+    (\d{3})
+    (\s|-|\.)
+    (\d{4})
+    (\s*(ext|x|ext.)\s*(\d{2,5}))?
 )''', re.VERBOSE)
 
 emailRegex = re.compile(r'''(
-[a-zA-Z0-9._%+-] +
-@
-[a-zA-Z0-9.-] + (\.[a-zA-Z]{2,4}) 
+    [a-zA-Z0-9._%+-]+
+    @
+    [a-zA-Z0-9.-]+(\.[a-zA-Z]{2,4})
 )''', re.VERBOSE)
+
 text = str(pyperclip.paste())
 matches = []
-for groups in phoneRegex.findall(text):
 
-phoneNum = '-'.join([groups[1], groups[3], groups[5]]) if groups[8] != '':
-phoneNum += ' x' + groups[8] matches.append(phoneNum)
-for groups in emailRegex.findall(text): matches.append(groups[0])
-if len(matches) > 0: pyperclip.copy('\n'.join(matches)) print('Copied to clipboard: ')
- 
-   print('\n'.join(matches))
-# TODO: Pasting the content --> txt file.
-s = pyperclip.paste()
-with open('phone&emailfinder.txt','w') as g:
-g.write(s) g.close()
+for groups in phoneRegex.findall(text):
+    phoneNum = '-'.join([groups[1], groups[3], groups[5]]) if groups[8] != '' else '-'.join([groups[1], groups[3], groups[5]])
+    phoneNum += ' x' + groups[8] if groups[8] != '' else ''
+    matches.append(phoneNum)
+
+for groups in emailRegex.findall(text):
+    matches.append(groups[0])
+
+if len(matches) > 0:
+    pyperclip.copy('\n'.join(matches))
+    print('Copied to clipboard:\n')
+    print('\n'.join(matches))
+
+    # Pasting the content into a text file.
+    with open('phone&emailfinder.txt', 'w') as g:
+        g.write('\n'.join(matches))
+
 else:
-print('No phone numbers or email addresses found.')
+    print('No phone numbers or email addresses found.')
 
 6a
 
 
 file_name = input("Enter the file name (e.g., myfile.txt): ")
+
 try:
-with open(file_name, 'r') as file:
-  lines = file.readlines()
-  num_lines = int(input("Enter the number of lines to display: "))
-  for line in lines[:num_lines]:
-    print(line.strip())
+    with open(file_name, 'r') as file:
+        lines = file.readlines()
+        num_lines = int(input("Enter the number of lines to display: "))
+        for line in lines[:num_lines]:
+            print(line.strip())
 except FileNotFoundError:
-  print("File not found. Please make sure the file exists in the specified path.")
+    print("File not found. Please make sure the file exists in the specified path.")
+
 
 6a 2
 
 
 file_name = input("Enter the file name (e.g., myfile.txt): ")
-try:
-with open(file_name, 'r') as file:
-  word = input("Enter the word to find its frequency: ")
-  frequency = 0
-  for line in file:
-    words = line.strip().split()
-    frequency += words.count(word)
 
-  print(f"The word '{word}' appeared {frequency} times in the file.")
+try:
+    with open(file_name, 'r') as file:
+        word = input("Enter the word to find its frequency: ")
+        frequency = 0
+        for line in file:
+            words = line.strip().split()
+            frequency += words.count(word)
+
+        print(f"The word '{word}' appeared {frequency} times in the file.")
 except FileNotFoundError:
-  print("File not found. Please make sure the file exists in the specified path.")
+    print("File not found. Please make sure the file exists in the specified path.")
+
 
 
 6b
 
-import zipfile import os
+import zipfile, os
+
 folder_path = input("Enter the folder path to zip: ")
 zip_file_name = input("Enter the name of the ZIP file to create: ")
+
 try:
-  with zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
-     for root, _, files in os.walk(folder_path):
-       for file in files:
-          file_path = os.path.join(root, file)
-          zipf.write(file_path, arcname=file)
-  print(f"The folder '{folder_path}' has been securely zipped into the file '{zip_file_name}'.")
+    with zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, _, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(file_path, arcname=file)
+    print(f"The folder '{folder_path}' has been securely zipped into the file '{zip_file_name}'.")
 except FileNotFoundError:
-  print("Folder not found. Please make sure the folder exists in the specified path.")
+    print("Folder not found. Please make sure the folder exists in the specified path.")
 
 
 7a
@@ -364,34 +411,36 @@ print("Area of Rectangle:", rectangle.calculate_area())
 
 7b
 
-class Employee:
-def __init__(self, name, employee_id, department, salary):
-  self.name = name 
-  self.employee_id = employee_id 
-  self.department = department 
-  self.salary = salary
-def update_salary(self, new_salary, department): 
-  if self.department == department:
-    self.salary = new_salary
-def __str__(self):
-  return f"Name: {self.name}\nEmployee_ID: {self.employee_id}\nDepartment:
-    {self.department}\nSalary: {self.salary}"
 
-employee1 = Employee("John Doe", 1, "Finance", 5000) 
-employee2 = Employee("Jane Smith", 2, "Engineering", 6000) 
+class Employee:
+    def __init__(self, name, employee_id, department, salary):
+        self.name = name
+        self.employee_id = employee_id
+        self.department = department
+        self.salary = salary
+
+    def update_salary(self, new_salary, department):
+        if self.department == department:
+            self.salary = new_salary
+
+    def __str__(self):
+        return f"Name: {self.name}\nEmployee_ID: {self.employee_id}\nDepartment: {self.department}\nSalary: {self.salary}"
+
+employee1 = Employee("John Doe", 1, "Finance", 5000)
+employee2 = Employee("Jane Smith", 2, "Engineering", 6000)
 employee3 = Employee("Tom Wilson", 3, "Engineering", 5500)
 
-print("Before salary update:") 
+print("Before salary update:")
 print(employee1)
 print(employee2)
 print(employee3)
 
 new_salary = 6500
 department = "Engineering"
-employee2.update_salary(new_salary, department) 
+employee2.update_salary(new_salary, department)
 employee3.update_salary(new_salary, department)
 
-print("\nAfter salary update:") 
+print("\nAfter salary update:")
 print(employee1)
 print(employee2)
 print(employee3)
@@ -400,32 +449,23 @@ print(employee3)
 
 8a
 
-# Parent class
 class PalindromeChecker:
-def __init__(self, input_str): self.input_str = input_str
-def is_palindrome(self): pass
-# Child class for string palindrome
-class StringPalindromeChecker(PalindromeChecker):
-def __init__(self, input_str): super().__init__(input_str)
-def is_palindrome(self):
-reversed_str = self.input_str[::-1]
-return self.input_str.lower() == reversed_str.lower()
-# Child class for integer palindrome
-class IntegerPalindromeChecker(PalindromeChecker):
-def __init__(self, input_int): super().__init__(str(input_int))
-def is_palindrome(self):
-reversed_str = self.input_str[::-1] return self.input_str == reversed_str
-# Getting user input
+    def __init__(self, input_str):
+        self.input_str = str(input_str)
+
+    def is_palindrome(self):
+        cleaned_str = ''.join(filter(str.isalnum, self.input_str)).lower()
+        return cleaned_str == cleaned_str[::-1]
+
 user_input = input("Enter a string or number to check palindromicity: ")
-# Checking if the input is a string palindrome str_palindrome = StringPalindromeChecker(user_input) if str_palindrome.is_palindrome():
-print("The entered string is a palindrome.") else:
-print("The entered string is not a palindrome.")
-# Checking if the input is an integer palindrome (if it is a valid integer) try:
-int_input = int(user_input)
-int_palindrome = IntegerPalindromeChecker(int_input) if int_palindrome.is_palindrome():
-print("The entered number is a palindrome.") else:
-print("The entered number is not a palindrome.") except ValueError:
-pass
+
+palindrome_checker = PalindromeChecker(user_input)
+
+if palindrome_checker.is_palindrome():
+    print("The entered input is a palindrome.")
+else:
+    print("The entered input is not a palindrome.")
+
 
 
 8b
