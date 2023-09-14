@@ -1,215 +1,416 @@
-1)PASSWORD
+1a
 
-#!/bin/bash
-valid_username="myusername"
-valid_password="mypassword"
+m1 = int(input("Enter the marks in the first test: ")) 
+m2 = int(input("Enter the marks in second test: ")) 
+m3 = int(input("Enter the marks in third test: "))
+if (m1 > m2):
+  if (m2 > m3):
+    total = m1 + m2 
+  else:
+    total = m1 + m3
+elif (m1 > m3): 
+  total = m1 + m2
+else:
+  total = m2 + m3
+Avg = total / 2
+print("The average of the best two test marks is: ", Avg)
 
-read -p "Enter username: " username
+1b
 
-read -s -p "Enter password: " password
-echo
+temp=num 
+rev=0 
+while(num!=0):
+  rem=num%10 
+  rev=rev*10+rem 
+  num=num//10
+  if rem == digit:
+  count += 1
+if temp==rev:
+  print("The number is a palindrome!")
+else:
+  print("The number isn't a palindrome!")
+print("{} occurred {} times in {}".format(digit, count, temp))
 
-if [ "$username" == "$valid_username" ]&& [ "$password" == "$valid_password" ]; then
-   echo "Valid username and password."
-else
-   echo "Invalid username or password."
-fi
+2a
 
-2)ARTHIMATIC CALCULATOR
+nterms = int(input("How many terms? "))
 
-#!/bin/sh
-a=10
-b=20
-x=”hello”
-y=”world”
-echo “a+b: $(($a+$b))”
-echo “a-b: $(($a-b))”
-echo “a%b: $(($a%$b))”
-echo “a/b: $(($a/b))”
-c=$x$y
-echo $c
-if ($a==$b)
-then
-​echo “a is equal to b”
-else
-​echo “a is not equal to b”
-fi
+n1, n2 = 0, 1 
+count = 0
+if nterms <= 0:
+ print("Please enter a positive integer")
+elif nterms == 1:
+ print("Fibonacci sequence upto",nterms,":") 
+ print(n1)
+else:
+ print("Fibonacci sequence:") while count < nterms:
+ print(n1)
+ nth = n1 + n2
+ n1 = n2
+ n2 = nth
+ count += 1
+
+2b
+
+def decimal_into_binary(decimal_1): 
+ decimal = int(decimal_1)
+ print("The given decimal number", decimal, "in Binary number is: ", bin(decimal))
+
+def decimal_into_octal(decimal_1): 
+ decimal = int(decimal_1)
+ print("The given decimal number", decimal, "in Octal number is: ", oct(decimal))
+
+def decimal_into_hexadecimal(decimal_1): 
+ decimal = int(decimal_1)
+ print("The given decimal number", decimal, " in Hexadecimal number is: ", hex(decimal))
+
+decimal_1 = int(input(" Enter the Decimal Number: ")) 
+decimal_into_binary(decimal_1) 
+decimal_into_octal(decimal_1) 
+decimal_into_hexadecimal(decimal_1)
+
+3a
+
+s = input("Enter a sentence: ") 
+w, d, u, l = 0, 0, 0, 0
+l_w = s.split()
+w = len(l_w)
+for c in s:
+ if c.isdigit():
+   d =d +1 
+ elif c.isupper():
+   u =u +1
+ elif c.islower():
+   l = l +1
+print ("No of Words: ", w)
+print ("No of Digits: ", d)
+print ("No of Uppercase letters: ", u) 
+print ("No of Lowercase letters: ", l)
 
 
-3)UPPER/LOWER CASE
+3b
 
-```bash
-var_name="THIS IS a TEST"
-$ echo "$VAR_NAME" | tr '[:upper:]' '[:lower:]'
-$ movie="The Matrix"
-$ echo "$movie" | tr '[:lower:]' '[:upper:]'
+import difflib
+def string_similarity(str1, str2):
+  result = difflib.SequenceMatcher(a=str1.lower(), b=str2.lower())
+  return result.ratio()
+str1 = 'Python Exercises'
+str2 = 'Python Exercises'
+print("Original string:")
+print(str1)
+print(str2)
+print("Similarity between two said strings:") 
+print(string_similarity(str1,str2))
+str1 = 'Python Exercises'
+str2 = 'Python Exercise'
+print("\nOriginal string:")
+print(str1)
+print(str2)
+print("Similarity between two said strings:")
+print(string_similarity(str1,str2))
+str1 = 'Python Exercises'
+str2 = 'Python Ex.'
+print("\nOriginal string:")
+print(str1)
+print(str2)
+print("Similarity between two said strings:") 
+print(string_similarity(str1,str2))
+str1 = 'Python Exercises' str2 = 'Python' 
+print("\nOriginal string:") 
+print(str1)
+print(str2)
+print("Similarity between two said strings:") 
+print(string_similarity(str1,str2))
+str1 = 'Python Exercises'
+str1 = 'Java Exercises'
+print("\nOriginal string:")
+print(str1)
+print(str2)
+print("Similarity between two said strings:") 
+print(string_similarity(str1,str2))
 
-4)REVERSE
 
-```bash
-#!/bin/bash
+
+4a
+
+def merge(arr, l, m, r):
+ n1 = m - l + 1
+ n2 = r - m
+ L = [0] * (n1)
+ R = [0] * (n2)
+ for i in range(0, n1): 
+   L[i] = arr[l + i]
+ for j in range(0, n2):
+   R[j] = arr[m + 1 + j]
+ i = 0
+ j = 0  
+ k = l 
+while i < n1 and j < n2: 
+  if L[i] <= R[j]:
+    arr[k] = L[i]
+    i += 1 
+  else:
+    arr[k] = R[j]
+    j += 1 
+  k += 1
+
+while i < n1:
+  arr[k] = L[i] 
+  i += 1
+  k += 1
+
+while j < n2:
+  arr[k] = R[j] 
+  j += 1
+  k += 1
+
+
+ def mergeSort(arr, l, r): 
+   if l < r:
+     m = l + (r - l) // 2
+     
+     mergeSort(arr, l, m) 
+     mergeSort(arr, m + 1, r)
+     merge(arr, l, m, r)
+
+arr = [12, 11, 13, 5, 6, 7] 
+n = len(arr) 
+print("Given array is")
+for i in range(n):
+   print("%d" % arr[i], end=" ")
+mergeSort(arr, 0, n - 1) 
+print("\n\nSorted array is") 
+for i in range(n):
+   print("%d" % arr[i], end=" ")
+
+
+Insertion sort:
+def insertionSort(arr):
+  if (n := len(arr)) <= 1:
+    return
+  for i in range(1, n):
+    key = arr[i]
+    j = i -1
+    while j >= 0 and key < arr[j]:
+      arr[j + 1] = arr[j]
+      j -= 1
+    arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6] 
+insertionSort(arr) 
+print(arr)
+
+4b
+
+class Solution(object):
+  def romanToInt(self, s):
+    roman = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000,'IV':4,'IX':9,'XL':40,'XC':90,'CD':400,'CM':900}
+    i= 0
+    num = 0
+    while i < len(s):
+       if i+1<len(s) and s[i:i+2] in roman:
+         num+=roman[s[i:i+2]]
+         i+=2 
+       else:
+          num+=roman[s[i]]
+          i+=1 
+    return num
+ob1 = Solution() 
+print(ob1.romanToInt("III")) 
+print(ob1.romanToInt("CDXLIII"))
+
+5a
+
+def isPhoneNumber(text): 
+  if len(text) != 12:
+    return False
+    for i in range(0, 3):
+      if not text[i].isdecimal(): 
+         return False
+  if text[3] != '-':
+    return False
+    for i in range(4, 7):
+      if not text[i].isdecimal(): 
+        return False
+  if text[7] != '-':
+     return False
+     for i in range(8, 12):
+        if not text[i].isdecimal(): 
+          return False
+return True
+print('Is 415-555-4242 a phone number?') 
+print(isPhoneNumber('415-555-4242')) 
+print('Is Moshi moshi a phone number?') 
+print(isPhoneNumber('Moshi moshi'))
+
+
+5b
+
+import pyperclip, re # Importing the libraries(this case: regex and pyperclip)
+ # Create phone regex. phoneRegex = re.compile(r'''(
+(\d{3}|\(\d{3}\))? # area code (\s|-|\.)? # separator
+(\d{3}) # first 3 digits
+(\s|-|\.) # separator
+(\d{4}) # last 4 digits (\s*(ext|x|ext.)\s*(\d{2,5}))? )''', re.VERBOSE)
+# TODO: Create email regex.
+# TODO: Find matches in clipboard text. # TODO: Copy results to the clipboard.
+# Create email regex. emailRegex = re.compile(r'''(
+[a-zA-Z0-9._%+-] + #username
+@ # @symbole [a-zA-Z0-9.-] + # domain (\.[a-zA-Z]{2,4}) # dot-something )''', re.VERBOSE)
+# Find matches in the clipboard text. text = str(pyperclip.paste())
+matches = []
+for groups in phoneRegex.findall(text):
+# extension
+phoneNum = '-'.join([groups[1], groups[3], groups[5]]) if groups[8] != '':
+phoneNum += ' x' + groups[8] matches.append(phoneNum)
+for groups in emailRegex.findall(text): matches.append(groups[0])
+if len(matches) > 0: pyperclip.copy('\n'.join(matches)) print('Copied to clipboard: ')
  
-# Store all arguments in an array
-args=("$@")
- 
-# Get the number of arguments
-num_args=$#
- 
-# Print arguments in reverse order
-for (( i=num_args-1; i>=0; i-- )); do
-   echo "${args[$i]}"
-done
-```
+   print('\n'.join(matches))
+# TODO: Pasting the content --> txt file.
+s = pyperclip.paste()
+with open('phone&emailfinder.txt','w') as g:
+g.write(s) g.close()
+else:
+print('No phone numbers or email addresses found.')
 
-5)FILE DIRECTORY
+6a
 
-```bash
-#!/bin/bash
- 
-# Read file path from user
-read -p "Enter a file path: " file_path
- 
-# Check if the file is a directory
-if [ -d "$file_path" ]; then
-   echo "The file is a directory."
-else
-   echo "The file is not a directory."
-fi
-```
+# Get the file name from the user
+file_name = input("Enter the file name (e.g., myfile.txt): ")
+try:
+# Open the file in read mode with open(file_name, 'r') as file:
+# Read all the lines into a list lines = file.readlines()
+# Get the number of lines to display from the user
+num_lines = int(input("Enter the number of lines to display: "))
+# Display the first N lines for line in lines[:num_lines]:
+print(line.strip())
+except FileNotFoundError:
+print("File not found. Please make sure the file exists in the specified path.")
 
+6a 2
 
-6)PERMISSION TO FILES
-
-```bash
-#!/bin/bash
- 
-# Check if two file names are provided as arguments
-if [ $# -ne 2 ]; then
-   echo "Error: Please provide exactly two file names as arguments."
-   exit 1
-fi
- 
-# Store the file names provided as arguments
-file1="$1"
-file2="$2"
- 
-# Check if both files exist
-if [ ! -e "$file1" ] || [ ! -e "$file2" ]; then
-   echo "Error: One or both of the specified files do not exist."
-   exit 1
-fi
- 
-# Get the permissions of both files
-perms_file1=$(stat -c "%a" "$file1")
-perms_file2=$(stat -c "%a" "$file2")
- 
-# Compare the permissions of the files
-if [ "$perms_file1" = "$perms_file2" ]; then
-   echo "The permissions of $file1 and $file2 are similar."
-else
-   echo "The permissions of $file1 and $file2 are different."
-fi
-```
-
-7)LEAP YEAR
-
-```bash
-#!/bin/bash
- 
-# Read year from user
-read -p "Enter a year: " year
- 
-# Check if the year is a leap year
-if (( year % 4 == 0 && year % 100 != 0 )) || (( year % 400 == 0 )); then
-   echo "The year $year is a leap year."
-else
-   echo "The year $year is not a leap year."
-fi
-```
-
-8)GCD LCM
-
-echo "Enter the two numbers" 
-read a 
-read b 
-x=$a 
-y=$b
-while [ $b -ne 0 ]
-do
-rem='expr $a % $b* 
-a=$b 
-b=$rem 
-done 
-ged=$a
-echo "The GCD of $x and $y is $ged"
-1cm='expr $× I* $y / $ged*
-echo "The LCM of $x and $y is $1cm"
- 
+# Get the file name from the user
+file_name = input("Enter the file name (e.g., myfile.txt): ")
+try:
+# Open the file in read mode with open(file_name, 'r') as file:
+# Get the word from the user
+word = input("Enter the word to find its frequency: ")
+# Initialize a counter variable frequency = 0
+# Loop through each line of the file for line in file:
+# Split the line into words words = line.strip().split()
+# Count the occurrences of the word frequency += words.count(word)
+# Display the frequency of the word
+print(f"The word '{word}' appeared {frequency} times in the file.")
+except FileNotFoundError:
+print("File not found. Please make sure the file exists in the specified path.")
 
 
-9)PRIME OR NOT
+6b
 
-```bash
-#!/bin/bash
- 
-# Function to check if a number is prime
-is_prime() {
-   number=$1
-   if ((number < 2)); then
-       return 1
-   fi
- 
-   # Check divisibility up to the square root of the number
-   for ((i = 2; i * i<= number; i++)); do
-       if ((number % i == 0)); then
-           return 1
-       fi
-   done
- 
-   return 0
-}
- 
-# Read the number from the user
-read -p "Enter a number: " input_number
- 
-# Check if the number is prime
-if is_prime "$input_number"; then
-   echo "$input_number is a prime number."
-else
-   echo "$input_number is not a prime number."
-fi
-```
-10)PALINDROME
-
-```bash
-#!/bin/bash
- 
-# Read string from user
-read -p "Enter a string: " input_string
- 
-# Remove non-alphanumeric characters and convert to lowercase
-clean_string=$(echo "$input_string" | tr -dc '[:alnum:]' | tr '[:upper:]' '[:lower:]')
- 
-# Reverse the string
-reverse_string=$(echo "$clean_string" | rev)
- 
-# Check if the string is a palindrome
-if [ "$clean_string" = "$reverse_string" ]; then
-   echo "The string '$input_string' is a palindrome."
-else
-   echo "The string '$input_string' is not a palindrome."
-fi
-```
+import zipfile import os
+# Get the folder path from the user
+folder_path = input("Enter the folder path to zip: ")
+# Get the ZIP file name from the user
+zip_file_name = input("Enter the name of the ZIP file to create: ")
+try:
+# Create a new ZIP file
+with zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+# Walk through each file in the folder for root, _, files in os.walk(folder_path):
+for file in files:
+# Get the absolute path of the file file_path = os.path.join(root, file)
+# Add the file to the ZIP archive zipf.write(file_path, arcname=file)
+print(f"The folder '{folder_path}' has been securely zipped into the file '{zip_file_name}'.")
+except FileNotFoundError:
+print("Folder not found. Please make sure the folder exists in the specified path.")
 
 
-is -1 $1|cut -d " " - f1›file1
-Is -1 $2|cut -d " " - f1›file2 
-if cmp file1 file2 ›error 
-then 
-cat file1 
-else 
-cat file1
-cat file2
+7a
+
+import math
+# Parent class class Shape:
+def __init__(self): pass
+def calculate_area(self): pass
+# Child class - Triangle inherits from Shape class Triangle(Shape):
+def __init__(self, base, height): super().__init__()
+self.base = base
+self.height = height
+def calculate_area(self):
+return 0.5 * self.base * self.height
+# Child class - Circle inherits from Shape class Circle(Shape):
+def __init__(self, radius): super().__init__() self.radius = radius
+def calculate_area(self):
+return math.pi * self.radius**2
+# Child class - Rectangle inherits from Shape class Rectangle(Shape):
+ 
+   def __init__(self, length, width): super().__init__()
+self.length = length
+self.width = width
+def calculate_area(self):
+return self.length * self.width
+# Creating instances of each class triangle = Triangle(5, 7)
+circle = Circle(3)
+rectangle = Rectangle(4, 6)
+# Calculating and printing the area of each shape print("Area of Triangle:", triangle.calculate_area()) print("Area of Circle:", circle.calculate_area()) print("Area of Rectangle:", rectangle.calculate_area())
 
 
+
+7b
+
+class Employee:
+def __init__(self, name, employee_id, department, salary):
+self.name = name self.employee_id = employee_id self.department = department self.salary = salary
+def update_salary(self, new_salary, department): if self.department == department:
+self.salary = new_salary
+def __str__(self):
+return f"Name: {self.name}\nEmployee_ID: {self.employee_id}\nDepartment:
+{self.department}\nSalary: {self.salary}"
+# Create employees
+employee1 = Employee("John Doe", 1, "Finance", 5000) employee2 = Employee("Jane Smith", 2, "Engineering", 6000) employee3 = Employee("Tom Wilson", 3, "Engineering", 5500)
+# Print employee details before updating salary print("Before salary update:") print(employee1)
+print(employee2)
+print(employee3)
+# Update salary of employees belonging to "Engineering" department new_salary = 6500
+department = "Engineering"
+employee2.update_salary(new_salary, department) employee3.update_salary(new_salary, department)
+# Print employee details after updating salary print("\nAfter salary update:") print(employee1)
+print(employee2)
+print(employee3)
+
+
+
+8a
+
+# Parent class
+class PalindromeChecker:
+def __init__(self, input_str): self.input_str = input_str
+def is_palindrome(self): pass
+# Child class for string palindrome
+class StringPalindromeChecker(PalindromeChecker):
+def __init__(self, input_str): super().__init__(input_str)
+def is_palindrome(self):
+reversed_str = self.input_str[::-1]
+return self.input_str.lower() == reversed_str.lower()
+# Child class for integer palindrome
+class IntegerPalindromeChecker(PalindromeChecker):
+def __init__(self, input_int): super().__init__(str(input_int))
+def is_palindrome(self):
+reversed_str = self.input_str[::-1] return self.input_str == reversed_str
+# Getting user input
+user_input = input("Enter a string or number to check palindromicity: ")
+# Checking if the input is a string palindrome str_palindrome = StringPalindromeChecker(user_input) if str_palindrome.is_palindrome():
+print("The entered string is a palindrome.") else:
+print("The entered string is not a palindrome.")
+# Checking if the input is an integer palindrome (if it is a valid integer) try:
+int_input = int(user_input)
+int_palindrome = IntegerPalindromeChecker(int_input) if int_palindrome.is_palindrome():
+print("The entered number is a palindrome.") else:
+print("The entered number is not a palindrome.") except ValueError:
+pass
+
+
+8b
+
+
+ 
 
