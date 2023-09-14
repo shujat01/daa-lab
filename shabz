@@ -201,3 +201,15 @@ else
 fi
 ```
 
+
+is -1 $1|cut -d " " - f1›file1
+Is -1 $2|cut -d " " - f1›file2 
+if cmp file1 file2 ›error 
+then 
+cat file1 
+else 
+cat file1
+cat file2
+
+
+
